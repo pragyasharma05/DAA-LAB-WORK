@@ -1,0 +1,57 @@
+#include<stdio.h>  
+int temp;  
+void maxheapify(int A[],int n,int i)  
+{  
+    int largest = i;    
+    int left = 2*i + 1;    
+    int right = 2*i + 2;    
+    if (left<n && A[left]>A[largest])  
+    {
+        largest = left;  
+    }
+    if (right<n && A[right]>A[largest])  
+    {
+        largest=right;  
+    }
+    if (largest != i)  
+    {  
+        temp = A[i];  
+        A[i]=A[largest];   
+        A[largest] = temp;  
+        maxheapify(A,n,largest);  
+    }  
+}  
+  
+void heapsort(int A[], int n)  
+{  
+    int i;  
+    for (i=n/2-1;i>=0;i--)  
+    {
+        maxheapify(A,n,i);  
+    }
+    for (i=n-1; i>=0; i--)  
+    {  
+        temp=A[0];  
+        A[0]=A[i];   
+        A[i]=temp;  
+        maxheapify(A,i,0);  
+    }  
+}  
+  
+void main()  
+{  
+    int A[10],i,n;
+    printf("enter the number of elements");
+    scanf("%d",&n);
+    printf("enter elements");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&A[i]);
+    }
+    heapsort(A,n);  
+    printf("sorted array\n");  
+    for (i=0; i<n; ++i)
+    {
+        printf("%d",A[i]);
+    }
+}
