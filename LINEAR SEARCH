@@ -1,0 +1,25 @@
+#include <iostream>
+#include<conio.h>
+
+using namespace std;
+int main()
+ {
+  	int a[5],i,searchel;
+  	cout<<"enter the array";
+  	for(i=0;i<5;i++)
+  	{
+  	    cin>>a[i];
+  	}
+  	cout<<"Enter the element u want to search";
+  	cin>>searchel;
+  	for(i=0;i<5;i++)
+  	{
+  		if(searchel==a[i])
+  		break;
+	}
+	if(i>=5)
+	cout<<"Element not found";
+	else
+	cout<<"Element found at position "<<i+1;
+	getch();
+  }
