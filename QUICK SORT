@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int partition(int A[],int p,int r)
+{   int i=0,j=0,x=0,temp=0;
+    x=A[r];
+    i=p-1;
+    for(j=p;j<=r-1;j++)
+    {
+        if(A[j]<=x)
+        {
+            i=i+1;
+            temp=A[i];
+            A[i]=A[j];
+            A[j]=temp;
+        }
+    }
+    temp=A[i+1];
+    A[i+1]=A[r];
+    A[r]=temp;
+    return(i+1);
+}
+void quicksort(int A[],int p,int r)
+{
+    if(p<r)
+    { int q=0;
+        q=partition(A,p,r);
+        quicksort(A,p,q-1);
+        quicksort(A,q+1,r);
+    }
+}
+
+int main() {
+	int A[10],n,p,q,r,x,i=0,temp=0;
+	printf("enter the size of an array");
+	scanf("%d",&n);
+	printf("enter the elements of an array");
+	for(i=0;i<n;i++)
+	{
+	    scanf("%d",&A[i]);
+	}
+	quicksort(A,0,n-1);
+	printf("sorted array: ");
+	for(i=0;i<n;i++)
+	{
+	    printf("%d",A[i]);
+	}
+	return 0;
+}
