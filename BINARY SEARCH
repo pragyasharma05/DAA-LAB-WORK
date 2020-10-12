@@ -1,0 +1,55 @@
+BINARY SEARCH:
+#include <iostream>
+#include<conio.h>
+using namespace std;
+int main()
+{
+	int count, i, a[5], n, fst, lst, mid, j, c;
+	cout<<"enter the number of elements:"; 
+    cin>>count;
+    cout<<"enter array number";
+	for (i=0; i<count; i++)
+	{
+	cin>>a[i];
+	}
+		for (i=0;i<count;++i) 
+    {
+    for (j=i+1;j<count;++j)
+    {
+    if (a[i]>a[j]) 
+    {
+    c=a[i];
+    a[i]=a[j];
+    a[j]=c;}}}
+    printf("The numbers arranged in ascending order are given below \n");
+    for (i=0;i<count;++i)
+    {
+        printf("%d\n", a[i]);
+    }
+	cout<<"Enter the number to search:"; 
+    cin>>n;
+	fst = 0;
+	lst = count-1;
+	mid = (fst+lst)/2;
+	 while (fst<=lst)
+	{
+    if(a[mid]<n)	   
+    {
+	fst = mid+1;}
+	else if(a[mid] == n)
+	{
+	cout<<n<<" found in the array at the location "<<mid+1<<"\n"; 
+    break; 
+    } 
+    else
+    {
+    lst = mid - 1; 
+    } 
+    mid = (fst + lst)/2; 
+    } 
+    if(fst > lst)
+	{
+	cout<<n<<" not found in the array";
+	}
+	return 0;
+}
